@@ -1,0 +1,122 @@
+
+
+    <ng-container *ngIf="isHandset$ | async; then thenTemplate; else elseTemplate"></ng-container>
+
+    <ng-template #thenTemplate>
+        <mat-toolbar color="accent" class="beetween" [ngStyle]="{'background-color': color}">
+            <mat-toolbar-row>
+                <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="toggle()"
+                *ngIf="mostrar && isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+                <div class="logo">
+                    <a><img src="../../../assets/images/logo.svg" alt=""></a>
+                </div>
+                <span class="medio-spacer">
+
+                </span>
+                <div class="user-actions">
+                    <user-actions-component [color]="fontColor"></user-actions-component>
+                </div>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row>
+                <span class="medio-spacer">
+                    <search-input *ngIf="inputSearch"></search-input>
+                </span>
+            </mat-toolbar-row>
+            <mat-toolbar-row *ngIf="inputSearch" class="">
+
+                <div  class="menu-nav">
+                    <ul>
+                        <li>
+                            <a [routerLink]="[ '/listado' ]"  [queryParams]= "{ condition : '0km'}" routerLinkActive="active">
+                                <mat-icon svgIcon="nuevos" aria-label="Vehículos 0Km"></mat-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/listado' ]"  [queryParams]= "{ condition : 'usado'}" routerLinkActive="active">
+                                <mat-icon svgIcon="usados" aria-label="Vehículos usados"></mat-icon>
+                            </a>
+                            
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/guia-de-precios' ]" routerLinkActive="active">
+                                <mat-icon svgIcon="guia" aria-label="Guia de precios"></mat-icon>
+                            </a>
+                        <li>
+                            <a [routerLink]="[ '/' ]" routerLinkActive="active">
+                                <mat-icon svgIcon="compare" aria-label="Agregar a comparador" [matBadge]="compareItems.length" matBadgeColor="primary"></mat-icon>
+                            </a>
+                        </li>
+                    </ul>
+                    <div>
+                        <a mat-button [routerLink]="['/vender/step1']"  class="btn-accent-secondary btn-vender">
+                            <mat-icon class="material-icons-round d-none d-sm-inline-block" >
+                                attach_money
+                            </mat-icon> Quiero venderlo!!!
+                        </a>
+                    </div>
+                </div>
+
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </ng-template>
+
+    <ng-template #elseTemplate>
+        <mat-toolbar color="accent" [ngStyle]="{'background-color': color}">
+            <mat-toolbar-row class="beetween">
+                <div class="logo">
+                    <a><img src="../../../assets/images/logo.svg" alt=""></a>
+                </div>
+                <span class="medio-spacer">
+                    <search-input  *ngIf="inputSearch"></search-input>
+                </span>
+                <div class="user-actions">
+                    <user-actions-component [color]="fontColor"></user-actions-component>
+                </div>
+            </mat-toolbar-row>
+            
+            <mat-toolbar-row *ngIf="inputSearch">
+
+                <div class="menu-nav">
+                    <ul>
+                        <li>
+                            <a [routerLink]="[ '/listado' ]" [queryParams]= "{ condition : '0km'}" routerLinkActive="active">Nuevos 0Km
+                                <mat-icon svgIcon="nuevos" aria-label="Vehículos 0Km"></mat-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/listado' ]" [queryParams]= "{ condition : 'usado'}" routerLinkActive="active">Usados
+                                <mat-icon svgIcon="usados" aria-label="Vehículos usados"></mat-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/guia-de-precios' ]" routerLinkActive="active">Guía de Precios
+                                <mat-icon svgIcon="guia" aria-label="Guia de precios"></mat-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/' ]" routerLinkActive="active" >Comparador
+                                <mat-icon svgIcon="compare" aria-label="Agregar a comparador" size="small" [matBadge]="compareItems.length" matBadgeColor="primary"></mat-icon>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="">
+                        <a mat-button [routerLink]="['/vender/step1']"  class="btn-accent-secondary btn-vender">
+                            <mat-icon class="material-icons-round" >
+                                attach_money
+                            </mat-icon> Venderlo!!!
+                        </a>
+                    </div>
+                </div>
+
+            </mat-toolbar-row>
+
+        </mat-toolbar>
+    </ng-template>
+
