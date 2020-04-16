@@ -1,12 +1,14 @@
 .logo {
   height: 64px;
-  width: 20%;
-  margin-left: 5%;
-  margin-top: 5px;
+  width: 15%;
+  margin-left: 10%;
+  margin-top: 10px;
 }
 .logo a {
   display: block;
-  width: 100px;
+  height: 64px;
+}
+.logo a img {
   height: 64px;
 }
 .medio-spacer {
@@ -57,14 +59,16 @@
 @media (max-width: 600px) {
   .logo {
     height: 60px;
-    width: 80px;
+    margin-left: 0%;
     margin-top: 5px;
     padding-top: 5px;
   }
   .logo a {
     display: block;
-    width: 80px;
     height: 60px;
+  }
+  .logo a img {
+    height: 50px;
   }
   .user-actions {
     margin-right: -5px !important;

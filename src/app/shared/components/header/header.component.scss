@@ -1,12 +1,15 @@
 .logo{
     height: 64px;
-    width: 20%;
-    margin-left: 5%;
-    margin-top: 5px;
+    width: 15%;
+    margin-left: 10%;
+    margin-top: 10px;
     a{
         display: block;
-        width: 100px;
+        // width: 150px;
         height: 64px;
+        img{
+            height: 64px;
+        }
     }
 }
 
@@ -71,13 +74,17 @@
 
     .logo{
         height: 60px;
-        width: 80px;
+        // width: 150px;
+        margin-left: 0%;
         margin-top: 5px;
         padding-top: 5px;
         a{
             display: block;
-            width: 80px;
+            // width: 150px;
             height: 60px;
+            img{
+                height: 50px;
+            }
         }
     }
     .user-actions{
