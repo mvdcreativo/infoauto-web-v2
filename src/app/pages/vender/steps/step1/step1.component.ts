@@ -43,11 +43,18 @@ export class Step1Component implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.generaFormStep1()
+
     this.activateRoute.params.subscribe(
       (param: Params) => {
         if (param.id) {
           this._publishService.getPublicationById(param.id).pipe(take(1)).subscribe(
-            res => this.getPublication()
+            res => {
+              // console.log(res);
+              
+              this.getPublication(res)
+            }
+
           )
         } else {
           this.route.navigate(['/vender/step1'])
@@ -56,43 +63,46 @@ export class Step1Component implements OnInit {
         
       }
     )
-    this.generaFormStep1()
+    
   }
 
-  private getPublication() {
+  private getPublication(publication) {
 
 
-    this._publishService.publication.subscribe(
-      res =>{ 
-        this.publication = res
 
-        if(this.formStep1){
-          this.selectModel(this.publication.brand_id);
-          this.selectSubModel(this.publication.vehicle_model_id);
+        this.publication = publication
+        // console.log(publication);
+setTimeout(()=>{
+  if(this.formStep1){
+    console.log(this.publication);
+    
+    this.selectModel(this.publication.brand_id);
+    this.selectSubModel(this.publication.vehicle_model_id);
 
-          this.formStep1.setValue({
-            user_id: this.publication.user_id,
-            vehicle_category_id: this.publication.vehicle_category_id,
-            brand_id: this.publication.brand_id,
-            vehicle_model_id: this.publication.vehicle_model_id,
-            vehicle_sub_model_id: this.publication.vehicle_sub_model_id,
-            year: this.publication.year,
-            price: this.publication.price,
-            condition_id: this.publication.condition_id,
-            km: this.publication.km,
-            state: this.publication.state,
-            currency_id: this.publication.currency_id,
-            city_id: this.publication.city_id,
-            neighborhood_id: this.publication.neighborhood_id,
-            price_condition_id: this.publication.price_condition_id,
-            cilindrada: this.publication.cilindrada,
-          });
+    this.formStep1.patchValue({
+      user_id: this.publication.user_id,
+      vehicle_category_id: this.publication.vehicle_category_id,
+      brand_id: this.publication.brand_id,
+      vehicle_model_id: this.publication.vehicle_model_id,
+      vehicle_sub_model_id: this.publication.vehicle_sub_model_id,
+      year: this.publication.year,
+      price: this.publication.price,
+      condition_id: this.publication.condition_id,
+      km: this.publication.km,
+      state: this.publication.state,
+      currency_id: this.publication.currency_id,
+      city_id: this.publication.city_id,
+      neighborhood_id: this.publication.neighborhood_id,
+      price_condition_id: this.publication.price_condition_id,
+      cilindrada: this.publication.cilindrada,
+    });
 
-        }
-        this.update = true;
+  }
+  this.update = true;
+},3500)
+        
 
-      }
-    )
+ 
   }
 
 
@@ -109,7 +119,7 @@ export class Step1Component implements OnInit {
       price: [0, Validators.required],
       condition_id: [null, Validators.required],
       km: [0],
-      state: ['PEN'],
+      state: [null],
       currency_id: [2, Validators.required],
       city_id: [user.city_id],
       neighborhood_id: [user.neighborhood_id],

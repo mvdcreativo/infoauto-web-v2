@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  API: 'http://infoauto-api.test/api/',
-  AuthAPI: 'http://infoauto-api.test/api/auth/',
-  urlFiles: 'http://infoauto-api.test/storage/'
+  API: 'https://api.infoauto.com.uy/api/',
+  AuthAPI: 'https://api.infoauto.com.uy/api/auth/',
+  urlFiles: 'https://api.infoauto.com.uy/storage/'
 };
 
 /*

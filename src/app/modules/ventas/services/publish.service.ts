@@ -64,10 +64,10 @@ export class PublishService {
       map(
         res =>{
           this.publicationSubject$.next(res)
-
-          ///busca si existe y actualiza vaores por defecto Plantilla
+          return res
+          ///busca si existe y actualiza valores por defecto Plantilla
           
-          console.log(res);
+          // console.log(res);
           
         },
         error => this.route.navigate(['/vender/step1'])

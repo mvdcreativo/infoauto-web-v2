@@ -74,19 +74,24 @@ export class DetalleComponent implements OnInit {
         })
 
         
-
-        
-        this.caracteristicas= this.eliminarObjetosDuplicados(attrPadre, 'id');
-        ///crea array para mostrar caracteristicas   
-        this.caracteristicas.forEach(element => {
-
-          this.vehiculo.attributes.forEach(item => {
-            if(item.attribute_id === element.id){
-              element.attributes.push({id:item.id, name:item.name})
-            }
+        if(attrPadre){
+          this.caracteristicas= this.eliminarObjetosDuplicados(attrPadre, 'id');
+          ///crea array para mostrar caracteristicas 
+          this.caracteristicas.forEach(element => {
+  
+            this.vehiculo.attributes.forEach(item => {
+              if(parseInt(item.attribute_id) === element.id){
+                element.attributes.push({id:item.id, name:item.name})
+              }
+            });
+  
           });
+          
 
-        });
+          
+        }
+        
+       
         
         
       }

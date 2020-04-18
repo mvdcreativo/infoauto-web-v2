@@ -13,7 +13,7 @@
             <div class="searcher row">
                 <mat-form-field class="category col-xs-12 col-sm-12 col-md-6 col-lg-4">
                     <mat-label>Tipo Vehículo</mat-label>
-                    <mat-select formControlName="vehicle_category_id" [(value)]="categoryId">
+                    <mat-select formControlName="vehicle_category_id">
                         <mat-option *ngFor="let category of categories" [value]='category.id'>
                             {{ category.name }}
                         </mat-option>
